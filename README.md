@@ -82,19 +82,20 @@ OpenAPI规范JSON:[http://localhost:3000/api/docs/json](http://localhost:3000/ap
 1. 创建目录结构:
 
 ```bash
-mkdir -p src/api/product/{controller.rs,dto.rs,mod.rs}
+mkdir -p src/api/test
+touch touch src/api/test/{controller,dto,mod}.rs
 ```
 
 2. 在`api/mod.rs`中添加:
 
 ```rust
-pub mod product;
+pub mod test;
 
 // 在create_api_service函数中添加
 OpenApiService::new(
     (
         user::UserController::default(),
-        product::ProductController::default(), // 新增
+        test::TestController::default(), // 新增
     ),
     // ...
 )
@@ -105,30 +106,28 @@ OpenApiService::new(
 在`controller.rs`中添加新端点:
 
 ```rust
-/// 获取用户统计
-/// 
-/// 获取系统用户统计信息
-#[oai(path = "/users/stats", method = "get")]
+/// 测试
+///
+/// 测试增加
+#[oai(path = "/test", method = "get")]
 async fn get_user_stats(&self) -> Result<Json<ApiResponse<serde_json::Value>>> {
     let stats = serde_json::json!({
-        "total": 100,
-        "active": 85,
-        "new_today": 5
+        "test": "这是一条测试数据",
     });
-    
     success_json(stats)
 }
 ```
 
 ## API分类
 
-在`src/config/tags.rs`中添加新的分类，如`product`:
+在`src/config/tags.rs`中添加新的分类，如`Test`:
 
 ```
 pub enum ApiTags {
     /// 用户模块
     User,
-    Product
+    /// 测试
+    Test
 }
 ```
 
@@ -136,20 +135,22 @@ pub enum ApiTags {
 在`controller.rs`指定tag:
 
 ```rust
-/// 获取用户统计
-/// 
-/// 获取系统用户统计信息
-#[oai(path = "/users/stats", method = "get", tag = ApiTags::Product)]
+/// 测试
+///
+/// 测试增加
+#[oai(path = "/test", method = "get" , tag = ApiTags::Test)]
 async fn get_user_stats(&self) -> Result<Json<ApiResponse<serde_json::Value>>> {
     let stats = serde_json::json!({
-        "total": 100,
-        "active": 85,
-        "new_today": 5
+        "test": "这是一条测试数据",
     });
-    
     success_json(stats)
 }
 ```
+
+
+
+![最终结果](https://github.com/user-attachments/assets/466383b8-300a-4fc0-b929-770a8e103f8d)
+
 
 ## 许可证
 
