@@ -159,4 +159,4 @@ MIT
 ## 联系方式
 
 - 项目地址: [https://github.com/snow-xf/rust-poem-api-template](https://github.com/snow-xf/rust-poem-api-template)
-- email: [livefei@live.com](livefei@live.com)
+- Email: [livefei@live.com](mailto:livefei@live.com)
