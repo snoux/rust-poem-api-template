@@ -1,4 +1,4 @@
-# 接口文档
+# 使用说明
 
 ## 项目概述
 
@@ -24,10 +24,6 @@ src/
 │   │   ├── mod.rs
 │   │   ├── controller.rs
 │   │   └── dto.rs
-│   └── system/     # 系统功能域（示例）
-│       ├── mod.rs
-│       ├── controller.rs
-│       └── dto.rs
 ├── config/         # 配置管理
 ├── middlewares/    # 中间件
 ├── models/         # 数据模型
@@ -64,6 +60,9 @@ cargo run
 
 打开浏览器访问: [http://localhost:3000/api/docs](http://localhost:3000/api/docs)
 
+![文档界面](https://github.com/user-attachments/assets/249385a9-ee50-4473-8ce3-46013e52b528)
+
+
 OpenAPI规范JSON:[http://localhost:3000/api/docs/json](http://localhost:3000/api/docs/json)
 
 ## API接口
@@ -76,12 +75,6 @@ OpenAPI规范JSON:[http://localhost:3000/api/docs/json](http://localhost:3000/ap
 - `PUT /api/users/:id` - 更新用户信息
 - `DELETE /api/users/:id` - 删除用户
 
-### 系统管理
-
-- `GET /api/system/status` - 获取系统状态
-- `GET /api/system/config` - 获取系统配置
-
-
 ## 基础扩展示例
 
 ### 添加新功能域
@@ -89,20 +82,20 @@ OpenAPI规范JSON:[http://localhost:3000/api/docs/json](http://localhost:3000/ap
 1. 创建目录结构:
 
 ```bash
-mkdir -p src/api/product/{controller.rs,dto.rs,mod.rs}
+mkdir -p src/api/test
+touch touch src/api/test/{controller,dto,mod}.rs
 ```
 
 2. 在`api/mod.rs`中添加:
 
 ```rust
-pub mod product;
+pub mod test;
 
 // 在create_api_service函数中添加
 OpenApiService::new(
     (
         user::UserController::default(),
-        system::SystemController::default(),
-        product::ProductController::default(), // 新增
+        test::TestController::default(), // 新增
     ),
     // ...
 )
@@ -113,30 +106,28 @@ OpenApiService::new(
 在`controller.rs`中添加新端点:
 
 ```rust
-/// 获取用户统计
-/// 
-/// 获取系统用户统计信息
-#[oai(path = "/users/stats", method = "get")]
+/// 测试
+///
+/// 测试增加
+#[oai(path = "/test", method = "get")]
 async fn get_user_stats(&self) -> Result<Json<ApiResponse<serde_json::Value>>> {
     let stats = serde_json::json!({
-        "total": 100,
-        "active": 85,
-        "new_today": 5
+        "test": "这是一条测试数据",
     });
-    
     success_json(stats)
 }
 ```
 
 ## API分类
 
-在`src/config/tags.rs`中添加新的分类，如`product`:
+在`src/config/tags.rs`中添加新的分类，如`Test`:
 
 ```
 pub enum ApiTags {
     /// 用户模块
     User,
-    Product
+    /// 测试
+    Test
 }
 ```
 
@@ -144,20 +135,22 @@ pub enum ApiTags {
 在`controller.rs`指定tag:
 
 ```rust
-/// 获取用户统计
-/// 
-/// 获取系统用户统计信息
-#[oai(path = "/users/stats", method = "get", tag = ApiTags::Product)]
+/// 测试
+///
+/// 测试增加
+#[oai(path = "/test", method = "get" , tag = ApiTags::Test)]
 async fn get_user_stats(&self) -> Result<Json<ApiResponse<serde_json::Value>>> {
     let stats = serde_json::json!({
-        "total": 100,
-        "active": 85,
-        "new_today": 5
+        "test": "这是一条测试数据",
     });
-    
     success_json(stats)
 }
 ```
+
+
+
+![最终结果](https://github.com/user-attachments/assets/466383b8-300a-4fc0-b929-770a8e103f8d)
+
 
 ## 许可证
 
@@ -166,3 +159,4 @@ MIT
 ## 联系方式
 
 - 项目地址: [https://github.com/snow-xf/rust-poem-api-template](https://github.com/snow-xf/rust-poem-api-template)
+- Email: [livefei@live.com](mailto:livefei@live.com)
