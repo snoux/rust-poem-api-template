@@ -22,3 +22,7 @@
 // pub fn load_config() -> Result<AppConfig, config::ConfigError> {
 //     // 配置加载逻辑
 // }
+
+
+// api标识
+pub mod tags;

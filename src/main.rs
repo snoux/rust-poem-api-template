@@ -43,7 +43,8 @@ async fn main() -> Result<(), std::io::Error> {
         .expect("无效的监听地址");
 
     tracing::info!("服务启动在 http://{}", addr);
-    tracing::info!("OpenAPI文档JSON可在 http://{}/api/docs 访问", addr);
+    tracing::info!("OpenAPI 文档 UI:  http://127.0.0.1:{}/api/docs", addr.port());
+    tracing::info!("OpenAPI 文档 JSON: http://127.0.0.1:{}/api/docs/json", addr.port());
 
     // 启动服务器
     Server::new(TcpListener::bind(addr))

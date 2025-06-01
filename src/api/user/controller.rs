@@ -6,6 +6,8 @@ use poem_openapi::{
     payload::Json,
     OpenApi,
 };
+use  crate::config::tags::ApiTags;
+
 use super::dto::*;
 
 /// 用户管理API控制器
@@ -19,7 +21,7 @@ impl UserController {
     /// 创建新用户
     /// 
     /// 根据提供的用户信息创建一个新用户
-    #[oai(path = "/users", method = "post", operation_id = "createUser")]
+    #[oai(path = "/users", method = "post", operation_id = "createUser", tag = ApiTags::User)]
     async fn create_user(&self, req: Json<CreateUserRequest>) -> Result<Json<ApiResponse<User>>> {
         // 这里是模拟实现，实际项目中应该调用service层处理业务逻辑
         let user = User {
@@ -37,7 +39,7 @@ impl UserController {
     /// 获取用户详情
     /// 
     /// 根据用户ID获取用户详细信息
-    #[oai(path = "/users/:id", method = "get", operation_id = "getUserById")]
+    #[oai(path = "/users/:id", method = "get", operation_id = "getUserById", tag = ApiTags::User)]
     async fn get_user(&self, id: Path<u64>) -> Result<Json<ApiResponse<User>>> {
         // 这里是模拟实现，实际项目中应该调用service层处理业务逻辑
         // 模拟用户查找
@@ -61,7 +63,7 @@ impl UserController {
     /// 更新用户信息
     /// 
     /// 根据用户ID更新用户信息
-    #[oai(path = "/users/:id", method = "put", operation_id = "updateUser")]
+    #[oai(path = "/users/:id", method = "put", operation_id = "updateUser", tag = ApiTags::User)]
     async fn update_user(&self, id: Path<u64>, req: Json<UpdateUserRequest>) -> Result<Json<ApiResponse<User>>> {
         // 这里是模拟实现，实际项目中应该调用service层处理业务逻辑
         // 模拟用户查找
@@ -88,7 +90,7 @@ impl UserController {
     /// 删除用户
     /// 
     /// 根据用户ID删除用户
-    #[oai(path = "/users/:id", method = "delete", operation_id = "deleteUser")]
+    #[oai(path = "/users/:id", method = "delete", operation_id = "deleteUser", tag = ApiTags::User)]
     async fn delete_user(&self, id: Path<u64>) -> Result<Json<ApiResponse<EmptyResponse>>> {
         // 这里是模拟实现，实际项目中应该调用service层处理业务逻辑
         // 模拟用户查找
@@ -105,7 +107,7 @@ impl UserController {
     /// 获取用户列表
     /// 
     /// 根据查询条件获取用户列表
-    #[oai(path = "/users", method = "get", operation_id = "listUsers")]
+    #[oai(path = "/users", method = "get", operation_id = "listUsers", tag = ApiTags::User)]
     async fn list_users(
         &self,
         /// 用户名模糊匹配
