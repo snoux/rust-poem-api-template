@@ -72,12 +72,6 @@ OpenAPI规范JSON:[http://localhost:3000/api/docs/json](http://localhost:3000/ap
 - `PUT /api/users/:id` - 更新用户信息
 - `DELETE /api/users/:id` - 删除用户
 
-### 系统管理
-
-- `GET /api/system/status` - 获取系统状态
-- `GET /api/system/config` - 获取系统配置
-
-
 ## 基础扩展示例
 
 ### 添加新功能域
