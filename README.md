@@ -128,6 +128,36 @@ async fn get_user_stats(&self) -> Result<Json<ApiResponse<serde_json::Value>>> {
 }
 ```
 
+## API分类
+
+在`src/config/tags.rs`中添加新的分类，如`product`:
+
+```
+pub enum ApiTags {
+    /// 用户模块
+    User,
+    Product
+}
+```
+
+
+在`controller.rs`指定tag:
+
+```rust
+/// 获取用户统计
+/// 
+/// 获取系统用户统计信息
+#[oai(path = "/users/stats", method = "get", tag = ApiTags::Product)]
+async fn get_user_stats(&self) -> Result<Json<ApiResponse<serde_json::Value>>> {
+    let stats = serde_json::json!({
+        "total": 100,
+        "active": 85,
+        "new_today": 5
+    });
+    
+    success_json(stats)
+}
+```
 
 ## 许可证
 
