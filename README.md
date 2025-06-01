@@ -4,6 +4,10 @@
 
 这是一个基于Rust和Poem框架的后端API模板项目，提供了模块化的API开发结构和示例。
 
+本人原本是做前端开发，也尝试使用Python做后端开发，考虑到性能问题最终决定学习使用Rust，为方便快速上手故决定做一个Rust模板。我的构想是能够直接上手，开箱即用，模板可以自动生成api文档并且未来有一定的扩展性。
+
+由于本人不是后端工程师，纯属自学，如有问题及修改建议欢迎联系！
+
 ## 快速开始
 
 ### 环境要求
@@ -29,6 +33,8 @@ cargo run
 3. 访问API文档
 
 打开浏览器访问: [http://localhost:3000/api/docs](http://localhost:3000/api/docs)
+
+OpenAPI规范JSON:[http://localhost:3000/api/docs/json](http://localhost:3000/api/docs/json)
 
 ## API接口
 
