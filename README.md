@@ -91,7 +91,6 @@ pub mod product;
 OpenApiService::new(
     (
         user::UserController::default(),
-        system::SystemController::default(),
         product::ProductController::default(), // 新增
     ),
     // ...
