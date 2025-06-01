@@ -2,11 +2,42 @@
 
 ## 项目概述
 
-这是一个基于Rust和Poem框架的后端API模板项目，提供了模块化的API开发结构和示例。
+这是一个基于 Rust 和 Poem 框架构建的后端 API 模板项目，旨在提供模块化的 API 开发结构与参考示例，帮助开发者更高效地进行服务端开发。
 
-本人原本是做前端开发，也尝试使用Python做后端开发，考虑到性能问题最终决定学习使用Rust，为方便快速上手故决定做一个Rust模板。我的构想是能够直接上手，开箱即用，模板可以自动生成api文档并且未来有一定的扩展性。
+作为一名前端开发者，我曾尝试使用 Python 编写后端服务，但出于对性能和类型安全的考虑，最终选择学习 Rust。为了降低学习曲线并加快开发效率，我构建了这个模板项目，力求做到开箱即用，具备以下特点：
+	•	✅ 基于 Poem 框架，结构清晰，易于扩展
+	•	✅ 支持模块化的 API 开发模式
+	•	✅ 自动生成 API 文档（使用 OpenAPI 标准）
+	•	✅ 面向学习者和小团队友好，便于快速上手
+欢迎大家提出宝贵意见或建议。如有任何问题或改进建议，欢迎联系我交流！
 
-由于本人不是后端工程师，纯属自学，如有问题及修改建议欢迎联系！
+⸻
+
+如果你有项目名称、GitHub 链接或打算发到开源平台，我还可以帮你润色 README 或撰写更完整的项目说明文档。需要的话，随时告诉我。
+
+## 项目结构
+
+```
+src/
+├── api/            # API 接口定义
+│   ├── mod.rs      # API 模块聚合
+│   ├── user/       # 用户功能域（示例）
+│   │   ├── mod.rs
+│   │   ├── controller.rs
+│   │   └── dto.rs
+│   └── system/     # 系统功能域（示例）
+│       ├── mod.rs
+│       ├── controller.rs
+│       └── dto.rs
+├── config/         # 配置管理
+├── middlewares/    # 中间件
+├── models/         # 数据模型
+├── services/       # 业务逻辑服务
+├── utils/          # 工具函数
+├── lib.rs          # 库入口
+└── main.rs         # 应用入口
+```
+
 
 ## 快速开始
 
@@ -51,50 +82,8 @@ OpenAPI规范JSON:[http://localhost:3000/api/docs/json](http://localhost:3000/ap
 - `GET /api/system/status` - 获取系统状态
 - `GET /api/system/config` - 获取系统配置
 
-## 项目结构
-
-```
-src/
-├── api/            # API 接口定义
-│   ├── mod.rs      # API 模块聚合
-│   ├── user/       # 用户功能域
-│   │   ├── mod.rs
-│   │   ├── controller.rs
-│   │   └── dto.rs
-│   └── system/     # 系统功能域
-│       ├── mod.rs
-│       ├── controller.rs
-│       └── dto.rs
-├── config/         # 配置管理
-├── middlewares/    # 中间件
-├── models/         # 数据模型
-├── services/       # 业务逻辑服务
-├── utils/          # 工具函数
-├── lib.rs          # 库入口
-└── main.rs         # 应用入口
-```
 
 ## 基础扩展示例
-
-### 添加新API端点
-
-在`controller.rs`中添加新端点:
-
-```rust
-/// 获取用户统计
-/// 
-/// 获取系统用户统计信息
-#[oai(path = "/users/stats", method = "get")]
-async fn get_user_stats(&self) -> Result<Json<ApiResponse<serde_json::Value>>> {
-    let stats = serde_json::json!({
-        "total": 100,
-        "active": 85,
-        "new_today": 5
-    });
-    
-    success_json(stats)
-}
-```
 
 ### 添加新功能域
 
@@ -119,6 +108,27 @@ OpenApiService::new(
     // ...
 )
 ```
+
+### 添加新API端点
+
+在`controller.rs`中添加新端点:
+
+```rust
+/// 获取用户统计
+/// 
+/// 获取系统用户统计信息
+#[oai(path = "/users/stats", method = "get")]
+async fn get_user_stats(&self) -> Result<Json<ApiResponse<serde_json::Value>>> {
+    let stats = serde_json::json!({
+        "total": 100,
+        "active": 85,
+        "new_today": 5
+    });
+    
+    success_json(stats)
+}
+```
+
 
 ## 许可证
 
