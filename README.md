@@ -60,6 +60,9 @@ cargo run
 
 打开浏览器访问: [http://localhost:3000/api/docs](http://localhost:3000/api/docs)
 
+![文档界面](https://github.com/user-attachments/assets/249385a9-ee50-4473-8ce3-46013e52b528)
+
+
 OpenAPI规范JSON:[http://localhost:3000/api/docs/json](http://localhost:3000/api/docs/json)
 
 ## API接口
