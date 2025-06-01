@@ -1,0 +1,43 @@
+[package]
+name = "rust-poem-api-template"
+version = "0.1.0"
+edition = "2021"
+authors = ["Template Creator"]
+description = "一个基于Rust和Poem框架的模块化后端API模板"
+
+# 更多关于Cargo.toml配置的信息请参考: https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+# Web框架核心依赖
+poem = "3.1.10"                    # Poem Web框架
+poem-openapi = { version = "5.1.14", features = ["swagger-ui"] }  # OpenAPI集成
+tokio = { version = "1.36.0", features = ["full"] } # 异步运行时
+
+# 序列化/反序列化
+serde = { version = "1.0.197", features = ["derive"] }
+serde_json = "1.0.114"
+
+# 日志相关
+tracing = "0.1.40"
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
+
+# 错误处理
+thiserror = "1.0.57"
+anyhow = "1.0.81"
+
+# 配置管理
+config = "0.14.0"
+dotenv = "0.15.0"
+
+# 数据库连接 (可选，根据需要启用)
+# sqlx = { version = "0.7.3", features = ["runtime-tokio-rustls", "postgres", "macros", "json", "chrono", "uuid"] }
+# deadpool-postgres = "0.12.1"
+
+# 认证相关 (可选，根据需要启用)
+# jsonwebtoken = "9.2.0"
+# bcrypt = "0.15.0"
+# uuid = { version = "1.7.0", features = ["v4", "serde"] }
+
+# 其他实用工具
+chrono = { version = "0.4.35", features = ["serde"] }
+once_cell = "1.19.0"
