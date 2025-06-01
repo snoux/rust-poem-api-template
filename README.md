@@ -24,10 +24,6 @@ src/
 │   │   ├── mod.rs
 │   │   ├── controller.rs
 │   │   └── dto.rs
-│   └── system/     # 系统功能域（示例）
-│       ├── mod.rs
-│       ├── controller.rs
-│       └── dto.rs
 ├── config/         # 配置管理
 ├── middlewares/    # 中间件
 ├── models/         # 数据模型
