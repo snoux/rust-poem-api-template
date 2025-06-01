@@ -148,13 +148,8 @@ async fn get_user_stats(&self) -> Result<Json<ApiResponse<serde_json::Value>>> {
 ```
 
 
-
 ![最终结果](https://github.com/user-attachments/assets/466383b8-300a-4fc0-b929-770a8e103f8d)
 
-
-## 许可证
-
-MIT
 
 ## 联系方式
 
