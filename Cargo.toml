@@ -2,8 +2,6 @@
 name = "{{crate_name}}"
 version = "0.1.0"
 edition = "2021"
-# authors = ["{{authors}}"]
-# description = "{{description}}"
 
 # 更多关于Cargo.toml配置的信息请参考: https://doc.rust-lang.org/cargo/reference/manifest.html
 
