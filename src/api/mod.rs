@@ -14,13 +14,13 @@ pub fn create_api_service() -> OpenApiService<(user::UserController), ()> {
         (
             user::UserController::default() // 用户管理API控制器
         ),
-        "API接口文档", // API标题
+        {{ documentTitle }}, // API标题
         env!("CARGO_PKG_VERSION"), // API版本（从Cargo.toml获取）
     )
     .server("/api") // API基础路径
-    .description("一个基于Rust和Poem框架的模块化后端API模板") // API描述
+    .description({{ description }}) // API描述
     .contact(ContactObject::new()
-        .name("snow-xf")
+        .name({{ authors }})
         .url("https://github.com/snow-xf/rust-poem-api-template")
         // .email("livefei@live.com")
     ) // 联系人信息

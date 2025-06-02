@@ -1,9 +1,9 @@
 [package]
-name = "rust-poem-api-template"
+name = "{{project-name}}"
 version = "0.1.0"
 edition = "2021"
-authors = ["Template Creator"]
-description = "一个基于Rust和Poem框架的模块化后端API模板"
+authors = ["{{authors}}"]
+description = "{{description}}"
 
 # 更多关于Cargo.toml配置的信息请参考: https://doc.rust-lang.org/cargo/reference/manifest.html
 
