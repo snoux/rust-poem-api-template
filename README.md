@@ -43,6 +43,9 @@ src/
 
 ### 安装与运行
 
+1. 通过```cargo generate --git https://github.com/snow-xf/rust-poem-api-template```创建项目
+2. 
+
 1. 克隆项目
 
 ```bash
