@@ -102,6 +102,10 @@ cargo run
 
 - [http://localhost:3000/api/docs](http://localhost:3000/api/docs)
 
+
+效果:
+![image](https://github.com/user-attachments/assets/0e19c363-7cf2-46bf-8e7d-76fc1c24fc1d)
+
 ---
 
 ## API接口示例
