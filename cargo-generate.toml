@@ -1,0 +1,14 @@
+[template]
+exclude = ["target", "Cargo.lock", ".git"]
+
+
+[placeholders]
+
+
+project_description = {type = "string", prompt = "请输入项目描述/简洁"} # 项目描述
+
+doc_title = {type = "string", prompt = "请输入文档标题"} # 文档标题
+
+author = {type = "string", prompt = "请输入作者/Github名称(可选，用来在文档中展示作者信息)", default = ""} # 作者名称
+
+github = {type = "string", prompt = "请输入Github地址(可选，用来在文档中展示作者信息)", default = ""} #Github地址
