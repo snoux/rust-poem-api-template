@@ -1,54 +1,39 @@
-# .cargo-generate.toml
-
 [template]
 name = "Rust Poem API Template"
 description = "一个基于 Poem 框架的后端 API 项目模板，支持模块化、OpenAPI、DTO 分层等"
 authors = ["{{authors}}"]
 
-
-
-# 排除 macOS 生成的 .DS_Store 文件，避免 cargo-generate 替换时出错
 exclude = [
     ".DS_Store",
     "src/.DS_Store"
 ]
 
-ignore = [ 
-  ".DS_Store",
-  "src/.DS_Store"
+ignore = [
+    ".DS_Store",
+    "src/.DS_Store"
 ]
 
+[placeholders.crate_name]
+type = "string"
+prompt = "请输入 Crate 名称"
+default = "{{project-name}}"  # project-name 是 cargo-generate 内部变量
 
-# 使用者生成项目时会被问到以下内容：
 [placeholders.authors]
 type = "string"
 prompt = "请输入作者名称"
 default = "your-name"
 
-[placeholders.project-name]
-type = "string"
-prompt = "请输入项目名称"
-default = "ust-poem-api-template"
-
-
 [placeholders.description]
 type = "string"
 prompt = "请输入项目描述"
-default = "一个使用 Poem 框架构建的模块化 Rust API 项目"
-
+default = "一个使用 Poem 构建的模块化 Rust API 项目"
 
 [placeholders.documentTitle]
 type = "string"
-prompt = "请输入API文档标题"
-default = "API接口文档"
-
+prompt = "请输入 API 文档标题"
+default = "API 接口文档"
 
 [placeholders.github]
 type = "string"
-prompt = "请输入GitHub地址"
+prompt = "请输入 GitHub 地址"
 default = "https://github.com/snow-xf/rust-poem-api-template"
-
-
-
-
-
