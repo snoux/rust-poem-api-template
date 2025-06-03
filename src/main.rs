@@ -3,7 +3,7 @@ use poem::{
     middleware::{Cors, Tracing},
     EndpointExt, Route, Server,
 };
-use rust_poem_api_template::api;
+use {{crate_name}}::api;
 use std::net::SocketAddr;
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 mod graphql;
