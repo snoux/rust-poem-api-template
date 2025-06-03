@@ -84,8 +84,12 @@ cargo install cargo-generate
 ### 以 hello_world 为例创建项目
 
 ```bash
-cargo generate --git https://github.com/snow-xf/rust-poem-api-template --name hello_world
+cargo generate --git https://github.com/snow-xf/rust-poem-api-template
 ```
+
+按照要求输入项目信息:
+![image](https://github.com/user-attachments/assets/965133a6-c7c2-40fd-a942-7fdca63438e0)
+
 
 然后进入目录：
 
@@ -97,6 +101,10 @@ cargo run
 访问文档：
 
 - [http://localhost:3000/api/docs](http://localhost:3000/api/docs)
+
+
+效果:
+![image](https://github.com/user-attachments/assets/0e19c363-7cf2-46bf-8e7d-76fc1c24fc1d)
 
 ---
 
