@@ -3,10 +3,11 @@ use poem::{
     middleware::{Cors, Tracing},
     EndpointExt, Route, Server,
 };
-use {{crate_name}}::api;
+use rust_poem_api_template::api;
 use std::net::SocketAddr;
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
-
+mod graphql;
+mod models;
 #[tokio::main]
 async fn main() -> Result<(), std::io::Error> {
     // 初始化日志
@@ -29,6 +30,8 @@ async fn main() -> Result<(), std::io::Error> {
         .nest("/api", api_service)
         // OpenAPI规范JSON端点
         .nest("/api/docs/json", api_doc_service.spec_endpoint())
+        // GraphQL路由
+        .nest("/graphql", graphql::create_graphql_route()) // 添加GraphQL路由
         // Swagger UI端点
         .nest("/api/docs", api_doc_service.swagger_ui())
         // 添加CORS中间件
@@ -45,6 +48,7 @@ async fn main() -> Result<(), std::io::Error> {
     tracing::info!("服务启动在 http://{}", addr);
     tracing::info!("OpenAPI 文档 UI:  http://127.0.0.1:{}/api/docs", addr.port());
     tracing::info!("OpenAPI 文档 JSON: http://127.0.0.1:{}/api/docs/json", addr.port());
+    tracing::info!("GraphQL 接口地址: http://127.0.0.1:{}/graphql", addr.port()); // ✅ 新增
 
     // 启动服务器
     Server::new(TcpListener::bind(addr))
