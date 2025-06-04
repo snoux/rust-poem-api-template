@@ -39,7 +39,7 @@ impl UserBase for User {
     }
 }
 
-// 从BaseUser转换为User的实现
+// 允许从BaseUser转换为User的实现
 impl From<BaseUser> for User {
     fn from(base: BaseUser) -> Self {
         Self {

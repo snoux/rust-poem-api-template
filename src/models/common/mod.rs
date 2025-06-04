@@ -7,7 +7,7 @@ use serde::{Serialize, Deserialize};
 
 /// 用户基础信息特性
 /// 
-/// 定义用户模型的基本属性和行为，用于在不同API类型间共享
+/// 定义用户模型的基本属性和行为，用于在不同API类型间共享（类似其他语言的协议）
 pub trait UserBase {
     /// 获取用户ID
     fn id(&self) -> Option<u64>;

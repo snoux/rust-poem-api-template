@@ -19,7 +19,7 @@ impl UserBase for User {
     }
 }
 
-// 从BaseUser转换为GraphQL User的实现
+// 允许从BaseUser转换为GraphQL User的实现
 impl From<BaseUser> for User {
     fn from(base: BaseUser) -> Self {
         Self {
@@ -29,7 +29,7 @@ impl From<BaseUser> for User {
     }
 }
 
-// 从REST API User转换为GraphQL User的实现
+// 允许从REST API User转换为GraphQL User的实现
 impl From<crate::models::user::User> for User {
     fn from(rest_user: crate::models::user::User) -> Self {
         Self {
