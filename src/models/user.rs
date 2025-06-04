@@ -1,5 +1,6 @@
 use poem_openapi::Object;
 use serde::{Deserialize, Serialize};
+use super::common::{UserBase, BaseUser};
 
 /// 用户模型
 /// 
@@ -25,6 +26,30 @@ pub struct User {
     /// 用户最后更新时间（ISO 8601格式）
     #[oai(read_only)]
     pub updated_at: Option<String>,
+}
+
+// 实现UserBase特性，支持与GraphQL模型的转换
+impl UserBase for User {
+    fn id(&self) -> Option<u64> {
+        self.id
+    }
+    
+    fn name(&self) -> &str {
+        &self.username
+    }
+}
+
+// 从BaseUser转换为User的实现
+impl From<BaseUser> for User {
+    fn from(base: BaseUser) -> Self {
+        Self {
+            id: base.id,
+            username: base.name,
+            email: String::new(), // 需要外部设置
+            created_at: None,
+            updated_at: None,
+        }
+    }
 }
 
 /// 用户创建请求
