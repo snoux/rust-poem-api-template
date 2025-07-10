@@ -33,30 +33,27 @@ impl GraphQLErrorType {
     }
 }
 
-/// 创建GraphQL错误
-pub fn graphql_error(error_type: GraphQLErrorType, message: impl Into<String>) -> Error {
-    let message = message.into();
-    let code = error_type.code().to_string();
-    
-    Error::new(message.clone())
-        .extend_with(|_, e| {
-            e.set("code", code);
-            e.set("type", format!("{:?}", error_type));
-        })
-}
 
-/// 将GraphQL错误转换为通用错误响应
+/// 从 GraphQL Error 中提取 ErrorResponse
 pub fn to_error_response(error: &Error) -> ErrorResponse {
-    let extensions = error.extensions();
-    let code = extensions
-        .get("code")
-        .and_then(|c| c.as_str())
-        .unwrap_or("UNKNOWN_ERROR")
-        .to_string();
-    
+    let code = extract_string_extension(error, "code").unwrap_or("UNKNOWN_ERROR".into());
+    let details = extract_string_extension(error, "details");
+
     ErrorResponse {
         code,
         message: error.message.clone(),
-        details: None,
+        details,
     }
+}
+
+/// 提取 extensions 字段中的字符串值
+fn extract_string_extension(error: &Error, key: &str) -> Option<String> {
+    error
+        .extensions
+        .as_ref()
+        .and_then(|ext| ext.get(key))
+        .and_then(|val| match val {
+            Value::String(s) => Some(s.clone()),
+            _ => None,
+        })
 }

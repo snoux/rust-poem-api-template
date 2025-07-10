@@ -1,5 +1,5 @@
 [template]
-exclude = ["target", "Cargo.lock", ".git"]
+exclude = ["target", "Cargo.lock", ".git",".DS_Store", "**/.DS_Store"]
 
 
 [placeholders]
