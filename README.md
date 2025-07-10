@@ -59,7 +59,7 @@ src/
 1. 克隆项目
 
 ```bash
-git clone https://github.com/snow-xf/rust-poem-api-template
+git clone https://github.com/snoux/rust-poem-api-template
 cd rust-poem-api-template
 ```
 
@@ -96,7 +96,7 @@ cargo install cargo-generate
 ### 以 hello_world 为例创建项目
 
 ```bash
-cargo generate --git https://github.com/snow-xf/rust-poem-api-template
+cargo generate --git https://github.com/snoux/rust-poem-api-template
 ```
 
 按照要求输入项目信息:
@@ -459,7 +459,7 @@ impl From<crate::models::user::User> for User {
 
 ## 联系方式
 
-- 项目地址: [https://github.com/snow-xf/rust-poem-api-template](https://github.com/snow-xf/rust-poem-api-template)
+- 项目地址: [https://github.com/snoux/rust-poem-api-template](https://github.com/snoux/rust-poem-api-template)
 - 邮箱: [livefei@live.com](mailto:livefei@live.com)
 
 ---
